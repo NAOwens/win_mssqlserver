@@ -4,8 +4,8 @@
   become: false 
 
   vars:
-#    inst_file: SQLINST.exe
-#    inst_config_file: SQLServerConfig.ini
+#    inst_file: SQL2019-SSEI-Dev.exe
+#    inst_config_file: SQLServer.ini
     inst_file: 'C:\Temp\SQLINST.exe'
     inst_config_file: 'C:\Temp\SQLServerConfig.ini'
 #    inst_file: 'C:\Users\sesvro01\Downloads\SQLINST.exe'
