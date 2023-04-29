@@ -18,18 +18,20 @@
 #    inst_config_file: 'C:\Users\sesvro01\Downloads\SQLServerConfig.ini'
 
   tasks:
-#  - name: Install packages with Choco
-#    win_chocolatey:
-#      name:
-#      - pstools
-#      state: present
+#    - name: Ping win server
+#      win_ping:
+
+  - name: Install packages with Chocolatey
+    win_chocolatey:
+      name:
+      - pstools
+      state: present
 #      
 #  - name: Display the output from psexec
 #    debug:
 #      msg: '{{ psexec_output }}'
 
-    - name: Ping win server
-      win_ping:
+    
 #
 #    - name: Run SQL Server Installer command-line
 #      win_shell: "{{ inst_file }} /Q /CONFIGURATIONFILE={{ inst_config_file }} /IACCEPTSQLSERVERLICENSETERMS=True"
