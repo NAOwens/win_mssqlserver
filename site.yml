@@ -21,9 +21,9 @@
     db_cpu_for_maxdop: '{{ ansible_processor_vcpus }}'
     db_sapwd: Ansible01
     inst_url: 'https://go.microsoft.com/fwlink/p/?linkid=866662'
-    inst_file: 'C:\Temp\SQLINST.exe'
+    inst_file: 'C:\Temp\SQLServer2019-x64-ENU-Dev'
     inst_db_type: SQLServer
-    inst_config_file: 'C:\Temp\SQLServerConfig.ini'
+    inst_config_file: 'C:\Temp\SQLServer.ini'
     dir_sqlbackups: 'C:\SQLBackups'
     dir_sqldata: 'C:\SQLData'
     dir_mssql: 'C:\MSSQL'
@@ -41,8 +41,8 @@
       - '{{ db_agent_user }}'
       - '{{ db_engine_user }}'
       - '{{ win_dom_user }}'
-      - NA\DBA Local Admins Users
-      - NA\SQL Database Administrators
+#      - domain\DBA Local Admins Users
+#      - domain\SQL Database Administrators
       
       
   tasks:
