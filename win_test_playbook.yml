@@ -21,8 +21,9 @@
 #  - name: Display the output from psexec
 #    debug:
 #      msg: '{{ psexec_output }}'
-#    - name: Ping win server
-#      win_ping:
+
+    - name: Ping win server
+      win_ping:
 #
 #    - name: Run SQL Server Installer command-line
 #      win_shell: "{{ inst_file }} /Q /CONFIGURATIONFILE={{ inst_config_file }} /IACCEPTSQLSERVERLICENSETERMS=True"
