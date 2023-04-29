@@ -1,0 +1,5 @@
+---
+# from a repository
+- src: git@vchgrhgit01.na.int.grp:windows/role_win_mssqlserver.git
+  name: role_win_mssqlserver
+  scm: git

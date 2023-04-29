@@ -1,0 +1,56 @@
+---
+# site.yml for win_mssqlserver
+
+- name: Project win_mssqlserver
+  hosts: '{{ survey_vm_hostname }}'
+  gather_facts: yes
+
+  vars:
+    ansible_user: '{{ WIN_LOCAL_ADMIN }}'
+    ansible_password: '{{ WIN_LOCAL_ADMIN_PASS }}'
+    ansible_connection: winrm
+    ansible_port: 5985
+    ansible_winrm_transport: ntlm
+    ansible_winrm_server_cert_validation: ignore
+    win_dom_user: '{{ WIN_DOMAIN_USER }}'
+    win_dom_pw: '{{ WIN_DOMAIN_PASSWORD }}'
+    db_agent_user: '{{ SQL_AGENT_USER }}'
+    db_agent_pw: '{{ SQL_AGENT_PASSWORD }}'
+    db_engine_user: '{{ SQL_ENGINE_USER }}'
+    db_engine_pw: '{{ SQL_ENGINE_PASSWORD }}'
+    db_cpu_for_maxdop: '{{ ansible_processor_vcpus }}'
+    db_sapwd: Ansible01
+    inst_url: 'https://go.microsoft.com/fwlink/p/?linkid=866662'
+    inst_file: 'C:\Temp\SQLINST.exe'
+    inst_db_type: SQLServer
+    inst_config_file: 'C:\Temp\SQLServerConfig.ini'
+    dir_sqlbackups: 'C:\SQLBackups'
+    dir_sqldata: 'C:\SQLData'
+    dir_mssql: 'C:\MSSQL'
+    dir_sqllogs: 'C:\SQLLogs'
+    dir_tempdb: 'C:\TempDB'
+    var_db_name: DBATools
+    inst_dbcreate_file: 'C:\Temp\DBCreate.sql'
+    db_dirs:
+      - '{{ dir_sqlbackups }}'
+      - '{{ dir_sqldata }}'
+      - '{{ dir_mssql }}'
+      - '{{ dir_sqllogs }}'
+      - '{{ dir_tempdb }}'
+    db_admins:
+      - '{{ db_agent_user }}'
+      - '{{ db_engine_user }}'
+      - '{{ win_dom_user }}'
+      - NA\DBA Local Admins Users
+      - NA\SQL Database Administrators
+      
+      
+  tasks:
+  - name: Setup MS SQL Server on '{{ ansible_fqdn }}'
+    include_role:
+      name: role_win_mssqlserver
+      apply:
+        tags:
+          - win_mssqlserver
+    tags:
+      - always
