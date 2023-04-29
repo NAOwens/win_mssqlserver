@@ -18,12 +18,12 @@
 #    inst_config_file: 'C:\Users\sesvro01\Downloads\SQLServerConfig.ini'
 
   tasks:
-#    - name: Ping win server
-#      win_ping:
+#   - name: Ping win server
+#     win_ping:
 
   - name: Install packages with Chocolatey
-    win_chocolatey:
-      name:
+    chocolatey.chocolatey.win_chocolatey:
+      name: 
       - pstools
       state: present
 #      
