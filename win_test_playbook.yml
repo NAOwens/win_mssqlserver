@@ -4,6 +4,12 @@
   become: false 
 
   vars:
+    ansible_user: '{{ windowsuser }}'
+    ansible_password: '{{ windowspassword }}'
+    ansible_connection: winrm
+    ansible_port: 5985
+    ansible_winrm_transport: ntlm
+    ansible_winrm_server_cert_validation: ignore
 #    inst_file: SQL2019-SSEI-Dev.exe
 #    inst_config_file: SQLServer.ini
     inst_file: 'C:\Temp\SQLINST.exe'
