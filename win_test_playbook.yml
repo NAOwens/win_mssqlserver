@@ -1,0 +1,40 @@
+---
+- hosts: 172.16.1.100
+  gather_facts: false
+  become: false 
+
+  vars:
+#    inst_file: SQLINST.exe
+#    inst_config_file: SQLServerConfig.ini
+    inst_file: 'C:\Temp\SQLINST.exe'
+    inst_config_file: 'C:\Temp\SQLServerConfig.ini'
+#    inst_file: 'C:\Users\sesvro01\Downloads\SQLINST.exe'
+#    inst_config_file: 'C:\Users\sesvro01\Downloads\SQLServerConfig.ini'
+
+  tasks:
+#  - name: Install packages with Choco
+#    win_chocolatey:
+#      name:
+#      - pstools
+#      state: present
+#      
+#  - name: Display the output from psexec
+#    debug:
+#      msg: '{{ psexec_output }}'
+#    - name: Ping win server
+#      win_ping:
+#
+#    - name: Run SQL Server Installer command-line
+#      win_shell: "{{ inst_file }} /Q /CONFIGURATIONFILE={{ inst_config_file }} /IACCEPTSQLSERVERLICENSETERMS=True"
+#      win_shell: 'C:\Temp\SQLINST.exe /Q /CONFIGURATIONFILE=C:\SQLServerConfig.ini /IACCEPTSQLSERVERLICENSETERMS=True'
+#      ansible_become: yes
+
+
+#    - name: Create directory structure
+#      win_file:
+#        path: C:\Norman
+#        state: directory
+
+#    - name: Reboot windows machine
+#      win_reboot:
+#
