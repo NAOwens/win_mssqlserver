@@ -21,7 +21,7 @@
     db_cpu_for_maxdop: '{{ ansible_processor_vcpus }}'
     db_sapwd: Ansible01
     inst_url: 'https://go.microsoft.com/fwlink/p/?linkid=866662'
-    inst_file: 'C:\Temp\SQLServer2019-x64-ENU-Dev'
+    inst_file: 'C:\Temp\SQL2019-SSEI-Dev.exe'
     inst_db_type: SQLServer
     inst_config_file: 'C:\Temp\SQLServer.ini'
     dir_sqlbackups: 'C:\SQLBackups'
