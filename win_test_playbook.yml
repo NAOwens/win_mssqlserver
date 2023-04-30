@@ -24,7 +24,7 @@
   - name: Install packages with Chocolatey
     chocolatey.chocolatey.win_chocolatey:
       name: 
-      - pstools
+        - putty
       state: present
 #      
 #  - name: Display the output from psexec
