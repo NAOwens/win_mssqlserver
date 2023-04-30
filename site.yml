@@ -3,7 +3,7 @@
 
 - name: Project win_mssqlserver
   hosts: '{{ survey_vm_hostname }}'
-  gather_facts: yes
+  gather_facts: no
 
   vars:
     ansible_user: '{{ windowsuser }}'
