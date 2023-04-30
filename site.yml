@@ -14,6 +14,7 @@
     ansible_winrm_server_cert_validation: ignore
     win_dom_user: '{{ domainuser }}'
     win_dom_pw: '{{ domainpassword }}'
+    db_telemetry_user: SQLTELEMETRY
     db_agent_user: dbagentuser
     db_agent_pw: P@ssw0rd!
     db_engine_user: dbengineuser
@@ -43,6 +44,7 @@
     db_admins:
       - '{{ db_agent_user }}'
       - '{{ db_engine_user }}'
+      - '{{ db_telemetry_user }}'
       
       
   tasks:
