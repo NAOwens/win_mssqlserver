@@ -14,11 +14,11 @@
     ansible_winrm_server_cert_validation: ignore
     win_dom_user: '{{ domainuser }}'
     win_dom_pw: '{{ domainpassword }}'
-    db_agent_user: '{{ SQL_AGENT_USER }}'
-    db_agent_pw: '{{ SQL_AGENT_PASSWORD }}'
-    db_engine_user: '{{ SQL_ENGINE_USER }}'
-    db_engine_pw: '{{ SQL_ENGINE_PASSWORD }}'
-    db_cpu_for_maxdop: '{{ ansible_processor_vcpus }}'
+    db_agent_user: dbagentuser
+    db_agent_pw: P@ssw0rd!
+    db_engine_user: dbengineuser
+    db_engine_pw: P@ssw0rd!
+    db_cpu_for_maxdop: 2
     db_sapwd: Ansible01
     inst_url: 'https://go.microsoft.com/fwlink/p/?linkid=866662'
     inst_file: 'C:\Temp\SQL2019-SSEI-Dev.exe'
@@ -29,6 +29,7 @@
     dir_mssql: 'C:\MSSQL'
     dir_sqllogs: 'C:\SQLLogs'
     dir_tempdb: 'C:\TempDB'
+    dir_temp: 'C:\Temp'
     var_db_name: DBATools
     inst_dbcreate_file: 'C:\Temp\DBCreate.sql'
     db_dirs:
@@ -37,6 +38,7 @@
       - '{{ dir_mssql }}'
       - '{{ dir_sqllogs }}'
       - '{{ dir_tempdb }}'
+      - '{{ dir_temp }}'
     db_admins:
       - '{{ db_agent_user }}'
       - '{{ db_engine_user }}'
