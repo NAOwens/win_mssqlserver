@@ -42,7 +42,6 @@
     db_admins:
       - '{{ db_agent_user }}'
       - '{{ db_engine_user }}'
-      - '{{ win_dom_user }}'
       
       
   tasks:
