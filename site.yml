@@ -15,9 +15,8 @@
     win_dom_user: '{{ domainuser }}'
     win_dom_pw: '{{ domainpassword }}'
     db_agent_user: dbagentuser
-    db_agent_pw: eP@ssw0rd!157#
     db_engine_user: dbengineuser
-    db_engine_pw: eP@ssw0rd!157#
+    db_pw: eP@ssw0rd!157#
     db_cpu_for_maxdop: 2
     db_sapwd: Ansible01
     inst_url: 'https://go.microsoft.com/fwlink/p/?linkid=866662'
