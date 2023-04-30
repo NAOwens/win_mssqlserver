@@ -21,10 +21,11 @@
   - name: Ping win server
     win_ping:
 
-  - name: Install packages with Chocolatey
-    chocolatey.chocolatey.win_chocolatey:
-      name: putty
+  - name: Install git
+    win_chocolatey:
+      name: git
       state: present
+
 #      
 #  - name: Display the output from psexec
 #    debug:
