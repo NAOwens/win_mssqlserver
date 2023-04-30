@@ -21,10 +21,10 @@
   - name: Ping win server
     win_ping:
 
-  - name: Install git
-    win_chocolatey:
-      name: git
-      state: present
+#  - name: Install git
+#    win_chocolatey:
+#      name: git
+#      state: present
 
 #      
 #  - name: Display the output from psexec
@@ -46,4 +46,3 @@
 
 #    - name: Reboot windows machine
 #      win_reboot:
-#
