@@ -18,6 +18,7 @@
 #    inst_config_file: 'C:\Users\sesvro01\Downloads\SQLServerConfig.ini'
 
   tasks:
+
   - name: Ping win server
     win_ping:
 
@@ -39,10 +40,10 @@
 #      ansible_become: yes
 
 
-#    - name: Create directory structure
-#      win_file:
-#        path: C:\Norman
-#        state: directory
+  - name: Create directory structure
+    win_file:
+      path: C:\Temp
+      state: directory
 
 #    - name: Reboot windows machine
 #      win_reboot:
