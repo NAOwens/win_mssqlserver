@@ -31,6 +31,7 @@
     dir_tempdb: 'C:\TempDB'
     dir_temp: 'C:\Temp'
     var_db_name: DBATools
+    dba_local_group: 'DBA Local Admins'
     inst_dbcreate_file: 'C:\Temp\DBCreate.sql'
     db_dirs:
       - '{{ dir_sqlbackups }}'
