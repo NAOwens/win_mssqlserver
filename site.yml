@@ -6,14 +6,14 @@
   gather_facts: yes
 
   vars:
-    ansible_user: '{{ WIN_LOCAL_ADMIN }}'
-    ansible_password: '{{ WIN_LOCAL_ADMIN_PASS }}'
+    ansible_user: '{{ windowsuser }}'
+    ansible_password: '{{ windowspassword }}'
     ansible_connection: winrm
     ansible_port: 5985
     ansible_winrm_transport: ntlm
     ansible_winrm_server_cert_validation: ignore
-    win_dom_user: '{{ WIN_DOMAIN_USER }}'
-    win_dom_pw: '{{ WIN_DOMAIN_PASSWORD }}'
+    win_dom_user: '{{ domainuser }}'
+    win_dom_pw: '{{ domainpassword }}'
     db_agent_user: '{{ SQL_AGENT_USER }}'
     db_agent_pw: '{{ SQL_AGENT_PASSWORD }}'
     db_engine_user: '{{ SQL_ENGINE_USER }}'
@@ -41,8 +41,6 @@
       - '{{ db_agent_user }}'
       - '{{ db_engine_user }}'
       - '{{ win_dom_user }}'
-#      - domain\DBA Local Admins Users
-#      - domain\SQL Database Administrators
       
       
   tasks:
