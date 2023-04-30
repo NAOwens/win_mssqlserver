@@ -45,7 +45,7 @@
       
       
   tasks:
-  - name: Setup MS SQL Server on '{{ ansible_fqdn }}'
+  - name: Setup MS SQL Server on "{{ survey_vm_hostname }}"
     include_role:
       name: role_win_mssqlserver
       apply:
