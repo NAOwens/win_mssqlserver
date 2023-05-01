@@ -10,34 +10,23 @@
     ansible_port: 5985
     ansible_winrm_transport: ntlm
     ansible_winrm_server_cert_validation: ignore
-#    inst_file: SQL2019-SSEI-Dev.exe
-#    inst_config_file: SQLServer.ini
-    inst_file: 'C:\Temp\SQLINST.exe'
-    inst_config_file: 'C:\Temp\SQLServerConfig.ini'
-#    inst_file: 'C:\Users\sesvro01\Downloads\SQLINST.exe'
-#    inst_config_file: 'C:\Users\sesvro01\Downloads\SQLServerConfig.ini'
+    inst_url: 'https://go.microsoft.com/fwlink/p/?linkid=866662'
+    inst_file: 'C:\Temp\SQL2019-SSEI-Dev.exe'
 
   tasks:
 
   - name: Ping win server
     win_ping:
-#      
-#  - name: Display the output from psexec
-#    debug:
-#      msg: '{{ psexec_output }}'
-
-    
-#
-#    - name: Run SQL Server Installer command-line
-#      win_shell: "{{ inst_file }} /Q /CONFIGURATIONFILE={{ inst_config_file }} /IACCEPTSQLSERVERLICENSETERMS=True"
-#      win_shell: 'C:\Temp\SQLINST.exe /Q /CONFIGURATIONFILE=C:\SQLServerConfig.ini /IACCEPTSQLSERVERLICENSETERMS=True'
-#      ansible_become: yes
-
 
   - name: Create directory structure
     win_file:
       path: C:\Temp
       state: directory
+
+  - name: Download MS SQL server install file
+    ansible.windows.win_get_url:
+      url: '{{ inst_url }}'
+      dest: '{{ inst_file }}'
 
 #    - name: Reboot windows machine
 #      win_reboot:
