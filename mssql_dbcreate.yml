@@ -1,0 +1,29 @@
+---
+# mssql_dbcreate
+
+- name: Create MS SQL DB Project
+  hosts: '{{ survey_vm_hostname }}'
+  gather_facts: no
+
+  vars:
+    ansible_user: '{{ windowsuser }}'
+    ansible_password: '{{ windowspassword }}'
+    ansible_connection: winrm
+    ansible_port: 5985
+    ansible_winrm_transport: ntlm
+    ansible_winrm_server_cert_validation: ignore
+    win_dom_user: '{{ domainuser }}'
+    win_dom_pw: '{{ domainpassword }}'
+    db_sapwd: Ansible01
+    dir_temp: 'C:\Temp'
+    inst_dbcreate_file: 'C:\Temp\DBCreate.sql'
+    db_dirs:
+      - '{{ dir_temp }}'
+      
+  tasks:
+  - name: Create DB in MS SQL Server
+    include_role:
+      name: role_win_mssqldb
+      apply:
+        tags:
+          - win_mssqldb
