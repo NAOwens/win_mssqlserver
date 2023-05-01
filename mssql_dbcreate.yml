@@ -28,3 +28,4 @@
       apply:
         tags:
           - win_mssqldb
+          - win_dbcreate
