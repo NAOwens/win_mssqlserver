@@ -3,3 +3,7 @@
 - src: https://github.com/NAOwens/role_win_mssqlserver.git
   name: role_win_mssqlserver
   scm: git
+
+- src: https://github.com/NAOwens/role_win_mssqldb.git
+  name: role_win_mssqldb
+  scm: git
