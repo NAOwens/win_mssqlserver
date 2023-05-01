@@ -7,3 +7,7 @@
 - src: https://github.com/NAOwens/role_win_mssqldb.git
   name: role_win_mssqldb
   scm: git
+
+- src: https://github.com/linux-system-roles/mssql.git
+  name: mssql
+  scm: git
