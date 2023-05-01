@@ -6,6 +6,7 @@
   gather_facts: no
 
   vars:
+    var_db_name: '{{ survey_db_name }}'
     ansible_user: '{{ windowsuser }}'
     ansible_password: '{{ windowspassword }}'
     ansible_connection: winrm
