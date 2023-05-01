@@ -27,5 +27,4 @@
       name: role_win_mssqldb
       apply:
         tags:
-          - win_mssqldb
-          - win_dbcreate
+          - mssql_dbcreate
