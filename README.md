@@ -1,43 +1,114 @@
 win_mssqlserver Project
 =========
 
-A brief description of the project win_mssqlserver goes here.
+This project provides playbooks to help with administering MS SQL Server
 
 Requirements
 ------------
 
-Any pre-requisites that may not be covered by Ansible itself or the project should be mentioned here. For instance, if the role uses the EC2 module, it may be a good idea to mention in this section that the boto package is required.
+This project contains these playbooks:
+1. site.yml - This playbook is used to install MS SQL Server on Windows.  It calls the role (role_win_mssqlserver)
+
+2. mssql_dbcreate.yml - This playbook is used to create a DB in MS SQL Server on Windows.  It calls the role (role_win_mssqldb)
+
+3. rhel_mssqlinstall.yml - This playbook is used to install MS SQL Server on RHEL.  It calls the RHEL system role (microsoft.sql.server)
+
+4. win_test_playbook.yml - This playbook is just used to test win_command and win_shell on Windows.
 
 win_mssqlserver Variables
 --------------
+# Variables needed for MS SQL Server on Windows
+# hostname or IP can be entered from AAP survey
+    survey_vm_hostname    
+# VARS for connecting to Windows VM via winrm
+    ansible_user: '{{ windowsuser }}'   
+    ansible_password: '{{ windowspassword }}'  
+    ansible_connection: winrm
+    ansible_port: 5985
+    ansible_winrm_transport: ntlm
+    ansible_winrm_server_cert_validation: ignore
+    win_dom_user: '{{ domainuser }}'   #windows AD domain admin user
+    win_dom_pw: '{{ domainpassword }}'
+# DB users for MS SQL Server 
+    db_agent_user: dbagentuser
+    db_engine_user: dbengineuser
+    db_pw: eP@ssw0rd!157#
+# MAXDOP - setting for max degree of parallelism 
+    db_cpu_for_maxdop: 2
+# SA password
+    db_sapwd: Ansible01
+# URL to download MS SQL SERVER 2019 install file
+    inst_url: 'https://go.microsoft.com/fwlink/p/?linkid=866662'
+# Path where MS SQL SERVER 2019 install file will be placed and used for install
+    inst_file: 'C:\Temp\SQL2019-SSEI-Dev.exe'
+# DB install type 
+    inst_db_type: SQLServer
+# file used to install MS SQL Server from command line
+    inst_config_file: 'C:\Temp\SQLServer.ini'
+# directories used in SQL Server install
+    dir_sqlbackups: 'C:\SQLBackups'
+    dir_sqldata: 'C:\SQLData'
+    dir_mssql: 'C:\MSSQL'
+    dir_sqllogs: 'C:\SQLLogs'
+    dir_tempdb: 'C:\TempDB'
+    dir_temp: 'C:\Temp'
+# name of DBTools DB
+    var_db_name: DBATools
+# local DBA group created on windows server
+    dba_local_group: 'DBA Local Admins'
+# file used to create DB from command line 
+    inst_dbcreate_file: 'C:\Temp\DBCreate.sql'
+# array containing directories to be created for SQL Server install
+    db_dirs:
+      - '{{ dir_sqlbackups }}'
+      - '{{ dir_sqldata }}'
+      - '{{ dir_mssql }}'
+      - '{{ dir_sqllogs }}'
+      - '{{ dir_tempdb }}'
+      - '{{ dir_temp }}'
+# array containing DB users
+    db_admins:
+      - '{{ db_agent_user }}'
+      - '{{ db_engine_user }}'
 
-A description of the settable variables for this project should go here, including any variables that are in defaults/main.yml, vars/main.yml, and any variables that can/should be set via parameters to the role. Any variables that are read from other roles and/or the global scope (ie. hostvars, group vars, etc.) should be mentioned here as well.
+# Variables needed for MS SQL Server on RHEL
+
+# accept license agreements
+    mssql_accept_microsoft_odbc_driver_17_for_sql_server_eula: true
+    mssql_accept_microsoft_cli_utilities_for_sql_server_eula: true
+    mssql_accept_microsoft_sql_server_standard_eula: true
+# set MQ SQL Server version
+    mssql_version: 2019
+# SA password
+    mssql_password: "p@55w0rD"
+# select the mssql server edition you want to install
+    mssql_edition: Developer
 
 Dependencies
 ------------
 
-A list of other roles hosted on Galaxy should go here, plus any details in regards to parameters that may need to be set for other roles, or variables that are used from other roles.
+site.yml - role_win_mssqlserver
+mssql_dbcreate.yml - role_win_mssqldb
+rhel_mssqlinstall.yml - microsoft.sql.server
 
 win_mssqlserver Project Playbook
 ----------------
+- name: Project win_mssqlserver
+  hosts: '{{ survey_vm_hostname }}'
+  gather_facts: no
 
-Including an example of how to use your project (for instance, with variables passed in as parameters) is always nice for users too:
+  vars:
+    <list all required vars>
 
-    - name: Project win_mssqlserver
-      hosts: all
-      gather_facts: no
-    
-      tasks:
-     - name: some role
-        include_role:
-          name: some role
-          apply:
-            tags:
-              - some tag
-        vars:
-          # add variables if needed else delete entire section
+tasks:
+  - name: Setup MS SQL Server on "{{ survey_vm_hostname }}"
+    include_role:
+      name: role_win_mssqlserver
+      apply:
         tags:
-          - always
+          - win_mssqlserver
+    tags:
+      - always
 
 License
 -------
@@ -47,4 +118,5 @@ GPL
 Author Information
 ------------------
 
-An optional section for the project authors to include contact information, or a website (HTML is not allowed).
+Norman Owens
+Norman.Owens@redhat.com
